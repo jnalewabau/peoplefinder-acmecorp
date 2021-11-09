@@ -42,9 +42,7 @@ The project needs to be configured with your Auth0 domain and client ID in order
 To do this, first copy `.env.example` into a new file in the same folder called `.env`, and replace the values with your own Auth0 application credentialsd as well as your Aserto developer keys:
 
 ```bash
-REACT_APP_DOMAIN={your Auth0 domain - e.g. in a form like `aserto-demo.us.auth0.com`}
-REACT_APP_CLIENT_ID={your Auth0 client ID}
-REACT_APP_AUDIENCE={the OAuth2 audience you configured for your API - e.g. `https://peoplefinder.sample`}
+
 REACT_APP_POLICY_ROOT={The policy root (the first component of the policy module name) - defaults to `peoplefinder`}
 POLICY_ID={Your Policy ID - find in the Aserto console in the "Policy settings" section}
 
@@ -84,6 +82,9 @@ To run the api-server on its own, run `yarn run api-server`.  To run the single-
 yarn run build
 ```
 
+<!--
+Disabled netlify for now...
+
 ### Deploy to Netlify
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/squanchd/peoplefinder-1#REACT_APP_AUDIENCE=https://express.sample&REACT_APP_POLICY_ROOT=peoplefinder&TENANT_ID=your-Aserto-tenant-ID&POLICY_ID=your-Aserto-policy-ID&AUTHORIZER_API_KEY=your-Aserto-authorizer-API-key&REACT_APP_NETLIFY=NETLIFY&REACT_APP_DEMO=true&AUTHORIZER_SERVICE_URL=https://authorizer.eng.aserto.com&REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com&REACT_APP_DEX_CLIENT_ID=acmecorp-app&REACT_APP_DEX_AUDIENCE=acmecorp-app)
@@ -101,7 +102,7 @@ Also, in order to run properly, the environment variables found in `.env.example
 * AUTHORIZER_API_KEY={Your Authorizer API Key (find in the Aserto console in the "Policy settings" section)}
 * TENANT_ID={Your Tenant ID (find in the Aserto console in the "Policy settings" section)}
 * POLICY_ID={Your Policy ID (find in the Aserto console in the "Policy settings" section)}
-* REACT_APP_NETLIFY=NETLIFY
+* REACT_APP_NETLIFY=NETLIFY -->
 
 ### Building and running as a local docker image
 
