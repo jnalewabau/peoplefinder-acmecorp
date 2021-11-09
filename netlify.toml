@@ -6,6 +6,11 @@
   to = "/"
   status = 200
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [template.environment]
   REACT_APP_POLICY_ROOT = "Policy root"
   POLICY_ID = "Policy ID"

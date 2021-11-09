@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { Auth0Provider } from '@auth0/auth0-react'
 import { AuthProvider as OIDCProvider } from 'oidc-react'
 import { AsertoProvider } from '@aserto/aserto-react'
 import config from './utils/config'
@@ -18,38 +17,22 @@ import './theme.css'
 import './index.css'
 
 
-const onRedirectCallback = async (appState) => {
-  history.push(
-    appState && appState.returnTo !== '/'
-      ? appState.returnTo
-      : '/people' //window.location.pathname
-  );
-};
-
 ReactDOM.render(
-  <Auth0Provider
-    domain={config.domain}
-    clientId={config.clientId}
-    audience={config.audience}
-    redirectUri={window.location.origin}
-    onRedirectCallback={onRedirectCallback}
-  >
     <AsertoProvider>
-      <OIDCProvider
-        {...config}
-        onSignIn={user => {
-          history.push('/people');
-        }}
-      >
-        <UsersProvider>
-          <AsertoProvider>
-            <App />
-          </AsertoProvider>
-        </UsersProvider>
-      </OIDCProvider>
-    </AsertoProvider>
-  </Auth0Provider>,
-  document.getElementById('root')
+        <OIDCProvider
+            {...config}
+            onSignIn={user => {
+                history.push('/people');
+            }}
+        >
+            <UsersProvider>
+                <AsertoProvider>
+                    <App />
+                </AsertoProvider>
+            </UsersProvider>
+        </OIDCProvider>
+    </AsertoProvider>,
+    document.getElementById('root')
 );
 
 
