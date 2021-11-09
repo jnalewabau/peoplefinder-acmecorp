@@ -82,7 +82,7 @@ To run the api-server on its own, run `yarn run api-server`.  To run the single-
 yarn run build
 ```
 
-<!--
+
 Disabled netlify for now...
 
 ### Deploy to Netlify
@@ -93,7 +93,7 @@ The project is ready to deploy to Netlify. Just click the "Deploy to Netlify" ba
 
 Note that the API is deployed as a Netlify function.
 
-Also, in order to run properly, the environment variables found in `.env.example` MUST be set up in the Deployment section in Netlify.
+<!-- Also, in order to run properly, the environment variables found in `.env.example` MUST be set up in the Deployment section in Netlify.
 
 * REACT_APP_DOMAIN={your Auth0 domain - e.g. in a form like `aserto-demo.us.auth0.com`}
 * REACT_APP_CLIENT_ID={your Auth0 client ID}
