@@ -4,7 +4,7 @@
 
 [Aserto](https://aserto.com) is an authorization framework that provides fine-grained authorization for API's and applications. Aserto can be used in the service / API to make allow/deny decisions based on an authorization policy.
 
-This sample demonstrates the integration of the [Aserto Express middleware](https://github.com/aserto-dev/express-jwt-aserto) with an API, and the [Aserto React SDK](https://github.com/auth0/auth0-react) into a React application created using [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html).
+This sample demonstrates the integration of the [Aserto Express middleware](https://github.com/aserto-dev/express-jwt-aserto) with an API, and the [Aserto React SDK](https://github.com/aserto-dev/aserto-react) into a React application created using [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html).
 
 The sample shows how to secure an API (defined in `service/users-api.js`) using the [Aserto Express middleware](https://github.com/aserto-dev/express-jwt-aserto). Refer to the Express middleware documentation for a deeper overview of how to use it.
 
@@ -27,19 +27,9 @@ yarn install
 
 ## Configuration
 
-This project is based on Auth0 as an identity provider, and therefore requires an Auth0 account.  You can provision a free Auth0 account at [auth0.com](https://auth0.com).
-
-This project contains both a React single-page application (SPA) as well as a node.js API.  The Default Application that is provisioned with a new Auth0 account can be used as the basis for the SPA.
-
-### Create an API
-
-You will need to [create an API](https://auth0.com/docs/apis) using the [management dashboard](https://manage.auth0.com/#/apis). This will give you an API identifier that you can use in the `audience` configuration field below.
-
 ### Configure credentials
 
-The project needs to be configured with your Auth0 domain and client ID in order for the authentication flow to work.
-
-To do this, first copy `.env.example` into a new file in the same folder called `.env`, and replace the values with your own Auth0 application credentialsd as well as your Aserto developer keys:
+Copy `.env.example` into a new file in the same folder called `.env`, and replace the values with  your Aserto developer keys:
 
 ```bash
 
@@ -82,27 +72,24 @@ To run the api-server on its own, run `yarn run api-server`.  To run the single-
 yarn run build
 ```
 
-
-Disabled netlify for now...
-
 ### Deploy to Netlify
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/aserto-dev/peoplefinder-acmecorp#REACT_APP_AUDIENCE=https://express.sample&REACT_APP_POLICY_ROOT=peoplefinder&TENANT_ID=your-Aserto-tenant-ID&POLICY_ID=your-Aserto-policy-ID&AUTHORIZER_API_KEY=your-Aserto-authorizer-API-key&REACT_APP_NETLIFY=NETLIFY&REACT_APP_DEMO=true&AUTHORIZER_SERVICE_URL=https://authorizer.eng.aserto.com&REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com&REACT_APP_DEX_CLIENT_ID=acmecorp-app&REACT_APP_DEX_AUDIENCE=acmecorp-app)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/aserto-dev/peoplefinder-acmecorp#REACT_APP_POLICY_ROOT=peoplefinder&TENANT_ID=your-Aserto-tenant-ID&POLICY_ID=your-Aserto-policy-ID&AUTHORIZER_API_KEY=your-Aserto-authorizer-API-key&REACT_APP_NETLIFY=NETLIFY&REACT_APP_DEMO=true&AUTHORIZER_SERVICE_URL=https://authorizer.eng.aserto.com&REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com&REACT_APP_DEX_CLIENT_ID=acmecorp-app&REACT_APP_DEX_AUDIENCE=acmecorp-app)
 
 The project is ready to deploy to Netlify. Just click the "Deploy to Netlify" badge on the repo, or fork the project and set up a Netlify deployment for it.
 
 Note that the API is deployed as a Netlify function.
 
-<!-- Also, in order to run properly, the environment variables found in `.env.example` MUST be set up in the Deployment section in Netlify.
+Also, in order to run properly, the environment variables found in `.env.example` MUST be set up in the Deployment section in Netlify.
 
-* REACT_APP_DOMAIN={your Auth0 domain - e.g. in a form like `aserto-demo.us.auth0.com`}
-* REACT_APP_CLIENT_ID={your Auth0 client ID}
-* REACT_APP_AUDIENCE={the OAuth2 audience you configured for your API - e.g. `https://express.sample`}
 * REACT_APP_POLICY_ROOT={policy root (the first component of the policy module name) - e.g. `peoplefinder`}
 * AUTHORIZER_API_KEY={Your Authorizer API Key (find in the Aserto console in the "Policy settings" section)}
 * TENANT_ID={Your Tenant ID (find in the Aserto console in the "Policy settings" section)}
 * POLICY_ID={Your Policy ID (find in the Aserto console in the "Policy settings" section)}
-* REACT_APP_NETLIFY=NETLIFY -->
+* REACT_APP_NETLIFY=NETLIFY
+REACT_APP_DEX_AUDIENCE=acmecorp-app
+REACT_APP_DEX_CLIENT_ID=acmecorp-app
+REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com
 
 ### Building and running as a local docker image
 

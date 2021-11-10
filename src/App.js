@@ -50,7 +50,7 @@ function App() {
             }
         }
 
-        // load the display state map when Auth0 has finished initializing
+        // load the display state map
         if (!asertoError && !isLoading && isAuthenticated) {
             initAserto();
         }
