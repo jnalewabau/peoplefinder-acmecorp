@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { Container, Row, Col, InputGroup, FormControl, Modal } from 'react-bootstrap'
-import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from 'oidc-react';
 
 import { useAserto } from '@aserto/aserto-react'
