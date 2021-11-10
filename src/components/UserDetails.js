@@ -15,10 +15,9 @@ const { apiOrigin = "http://localhost:3001" } = config;
 const resourcePath = '/api/users/__id';
 
 const attrKey = 'attributes';
-// const attrKey = 'user_metadata'; //auth0
+
 
 const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
-    //   const { getAccessTokenSilently } = useAuth0();
     const dexAuth = useAuth();
     const { getDisplayState, identity } = useAserto();
     const { users, loadUsers } = useUsers();
