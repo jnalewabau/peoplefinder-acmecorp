@@ -17,7 +17,6 @@
   TENANT_ID = "Aserto tenant ID"
   AUTHORIZER_API_KEY = "Aserto authorizer API key"
   REACT_APP_NETLIFY = "Netlify flag must be set to NETLIFY"
-  AUTHORIZER_SERVICE_URL = "Authorizer service URL"
   REACT_APP_DEX_DOMAIN="Aserto Demo Domain (acmecorp.demo.aserto.com)"
   REACT_APP_DEX_CLIENT_ID="Demo Client ID (acmecorp-app)"
   REACT_APP_DEX_AUDIENCE="Demo Audience (acmecorp-app)"
