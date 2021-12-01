@@ -87,9 +87,9 @@ Also, in order to run properly, the environment variables found in `.env.example
 * TENANT_ID={Your Tenant ID (find in the Aserto console in the "Policy settings" section)}
 * POLICY_ID={Your Policy ID (find in the Aserto console in the "Policy settings" section)}
 * REACT_APP_NETLIFY=NETLIFY
-REACT_APP_DEX_AUDIENCE=acmecorp-app
-REACT_APP_DEX_CLIENT_ID=acmecorp-app
-REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com
+* REACT_APP_DEX_AUDIENCE=acmecorp-app
+* REACT_APP_DEX_CLIENT_ID=acmecorp-app
+* REACT_APP_DEX_DOMAIN=acmecorp.demo.aserto.com
 
 ### Building and running as a local docker image
 
