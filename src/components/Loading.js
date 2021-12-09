@@ -6,4 +6,9 @@ const Loading = () =>
     <img src={loading} alt="Loading" />
   </div>
 
+export const LoadingSpinner = () =>
+  <div className="spinner-loading">
+    <img src={loading} alt="Loading" />
+  </div>
+
 export default Loading

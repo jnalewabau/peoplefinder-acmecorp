@@ -6,6 +6,7 @@ import { useAuth } from 'oidc-react';
 import { useAserto } from '@aserto/aserto-react'
 import { Button } from './Button'
 import Highlight from './Highlight'
+import { LoadingSpinner } from './Loading'
 import { useUsers } from '../utils/users'
 
 import config from '../utils/config'
@@ -19,7 +20,7 @@ const attrKey = 'attributes';
 
 const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
     const dexAuth = useAuth();
-    const { getDisplayState, identity } = useAserto();
+    const { getDisplayState, identity, reload } = useAserto();
     const { users, loadUsers } = useUsers();
     const [showDetail, setShowDetail] = useState(false);
     const [editing, setEditing] = useState(false);   // edit phone property
@@ -28,6 +29,7 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
     const [department, setDepartment] = useState();
     const [title, setTitle] = useState();
     const [error, setError] = useState();
+    const [loading, setLoading] = useState(true)
 
     // retrieve the manager name
     const managerId = user && user[attrKey] && user[attrKey].properties.manager;
@@ -35,10 +37,20 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
     const managerName = manager && manager.display_name;
 
     useEffect(() => {
+        const reloadDisplayStateMap = async () => {
+            setLoading(true);
+            await reload(JSON.stringify({
+                id: user.id
+            }))
+            setLoading(false);
+        }
+
+        reloadDisplayStateMap();
+
         setPhone(user[attrKey].properties.phone || '');
         setDepartment(user[attrKey].properties.department || '');
         setTitle(user[attrKey].properties.title || '');
-    }, [user])
+    }, [user, reload])
 
     const update = async (method, key, value) => {
         try {
@@ -143,7 +155,7 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
     const display = { visible: true, enabled: true };
 
     return (
-        <Container className="mt-5 mb-5">
+        !loading ? (<Container className="mt-5 mb-5">
             <Row className="align-items-center profile-header mb-5 text-center text-md-left">
                 <Col md={2}>
                     <img
@@ -308,7 +320,7 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </Container>
+        </Container>) : <LoadingSpinner />
     )
 })
 
