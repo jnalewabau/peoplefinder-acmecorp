@@ -6,6 +6,7 @@ import { useAuth } from 'oidc-react';
 import { useAserto } from '@aserto/aserto-react'
 import { Button } from './Button'
 import Highlight from './Highlight'
+import { LoadingSpinner } from './Loading'
 import { useUsers } from '../utils/users'
 
 import config from '../utils/config'
@@ -319,7 +320,7 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </Container>) : (<div>Loading...</div>)
+        </Container>) : <LoadingSpinner />
     )
 })
 
