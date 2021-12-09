@@ -46,7 +46,9 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
         }
 
         reloadDisplayStateMap();
+    }, [reload, user.id])
 
+    useEffect(() => {
         setPhone(user[attrKey].properties.phone || '');
         setDepartment(user[attrKey].properties.department || '');
         setTitle(user[attrKey].properties.title || '');
