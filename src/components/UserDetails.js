@@ -52,7 +52,7 @@ const UserDetails = withRouter(({ user, setUser, loadUser, history }) => {
     setPhone(user[attrKey].properties.phone || '');
     setDepartment(user[attrKey].properties.department || '');
     setTitle(user[attrKey].properties.title || '');
-  }, [user.id, reload])
+  }, [user])
 
   const update = async (method, key, value) => {
     try {
