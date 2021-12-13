@@ -18,21 +18,21 @@ import './index.css'
 
 
 ReactDOM.render(
-    <AsertoProvider>
-        <OIDCProvider
-            {...config}
-            onSignIn={user => {
-                history.push('/people');
-            }}
-        >
-            <UsersProvider>
-                <AsertoProvider>
-                    <App />
-                </AsertoProvider>
-            </UsersProvider>
-        </OIDCProvider>
-    </AsertoProvider>,
-    document.getElementById('root')
+  <AsertoProvider>
+    <OIDCProvider
+      {...config}
+      onSignIn={user => {
+        history.push('/people');
+      }}
+    >
+      <UsersProvider>
+        <AsertoProvider>
+          <App />
+        </AsertoProvider>
+      </UsersProvider>
+    </OIDCProvider>
+  </AsertoProvider>,
+  document.getElementById('root')
 );
 
 

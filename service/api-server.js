@@ -11,14 +11,14 @@ const isNetlify = process.env.NETLIFY || process.env.REACT_APP_NETLIFY;
 
 // retrieve configuration
 const {
-    port,
-    authorizerServiceUrl,
-    policyRoot,
-    policyId,
-    domain,
-    audience,
-    tenantId,
-    authorizerCertFile
+  port,
+  authorizerServiceUrl,
+  policyRoot,
+  policyId,
+  domain,
+  audience,
+  tenantId,
+  authorizerCertFile
 } = require('./src/config');
 
 const app = express();
@@ -27,7 +27,7 @@ const routerBasePath = isNetlify ? '/.netlify/functions/api-server' : '/';
 
 app.use(morgan("dev"));
 app.use(helmet({
-    contentSecurityPolicy: false
+  contentSecurityPolicy: false
 }));
 app.use(cors({ origin: true }));
 app.use(bodyParser.json());
@@ -45,24 +45,24 @@ console.log(`Policy ID: ${policyId}`);
 console.log(`Policy root: ${policyRoot}`);
 
 if (tenantId) {
-    console.log(`Tenant ID: ${tenantId}`);
+  console.log(`Tenant ID: ${tenantId}`);
 }
 if (authorizerCertFile) {
-    console.log(`Authorizer Cert file: ${authorizerCertFile}`);
+  console.log(`Authorizer Cert file: ${authorizerCertFile}`);
 }
 
 // make it work with netlify functions
 if (isNetlify) {
-    const serverless = require("serverless-http");
-    exports.handler = serverless(app);
+  const serverless = require("serverless-http");
+  exports.handler = serverless(app);
 } else {
-    // main endpoint serves react bundle from /build
-    app.use(express.static(join(__dirname, '..', 'build')));
+  // main endpoint serves react bundle from /build
+  app.use(express.static(join(__dirname, '..', 'build')));
 
-    // serve all /people client-side routes from the /build bundle
-    app.get('/people*', function (req, res) {
-        res.sendFile(join(__dirname, '..', 'build', 'index.html'));
-    });
+  // serve all /people client-side routes from the /build bundle
+  app.get('/people*', function (req, res) {
+    res.sendFile(join(__dirname, '..', 'build', 'index.html'));
+  });
 
-    app.listen(port, () => console.log(`API Server listening on port ${port}`));
+  app.listen(port, () => console.log(`API Server listening on port ${port}`));
 }
