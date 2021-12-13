@@ -9,7 +9,7 @@ const { authorizerServiceUrl, authorizerCert, tenantId, authorizerApiKey } = req
 
 // create a well-configured axios client initialized with the correct authrorizer certificate
 const https = require('https');
-const axios = authorizerCert ? 
+const axios = authorizerCert ?
   require('axios').create({
     httpsAgent: new https.Agent({
       ca: authorizerCert
@@ -21,7 +21,7 @@ const axios = authorizerCert ?
 exports.getUser = async (req, user) => {
   try {
     const url = `${authorizerServiceUrl}/api/v1/dir/users/${user}`;
-    const headers = { 
+    const headers = {
       'content-type': 'application/json',
     };
     if (tenantId) {
@@ -49,7 +49,7 @@ exports.getUser = async (req, user) => {
 exports.getUsers = async (req) => {
   try {
     const url = `${authorizerServiceUrl}/api/v1/dir/users?page.size=-1&fields.mask=id,display_name,picture,email`;
-    const headers = { 
+    const headers = {
       'content-type': 'application/json',
     };
     if (tenantId) {
@@ -70,14 +70,14 @@ exports.getUsers = async (req) => {
   } catch (error) {
     console.error(`getUsers: caught exception: ${error}`);
     return null;
-  }  
+  }
 }
 
 // update a user
 exports.updateUser = async (req, user, payload) => {
   try {
     const url = `${authorizerServiceUrl}/api/v1/dir/users/${user}/attributes/properties`;
-    const headers = { 
+    const headers = {
       'content-type': 'application/json',
     };
     if (tenantId) {

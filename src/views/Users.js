@@ -8,35 +8,35 @@ import UserList from '../components/UserList'
 import Filter from '../components/Filter'
 
 export const UsersView = () => {
-    const { getDisplayState } = useAserto();
-    const { users, setUsers, loadUsers, loading } = useUsers();
-    const [filter, setFilter] = useState('');
-    const pageTitle = 'People';
-    const displayState = getDisplayState('GET', '/api/users');
-    const userList = (filter && users) ? users.filter(u => u.display_name.toLowerCase().includes(filter)) : users;
+  const { getDisplayState } = useAserto();
+  const { users, setUsers, loadUsers, loading } = useUsers();
+  const [filter, setFilter] = useState('');
+  const pageTitle = 'People';
+  const displayState = getDisplayState('GET', '/api/users');
+  const userList = (filter && users) ? users.filter(u => u.display_name.toLowerCase().includes(filter)) : users;
 
 
-    if (!displayState.visible) {
-        return (
-            <Container className="mb-5">
-                <h1>Error</h1>
-                <h2>You don't have sufficient permissions to view people.</h2>
-            </Container>
-        )
-    }
-
+  if (!displayState.visible) {
     return (
-        <Container>
-            <PageHeader title={pageTitle} load={loadUsers} loading={loading}>
-                <Filter
-                    placeholder='Filter'
-                    value={filter}
-                    setValue={setFilter}
-                />
-            </PageHeader>
-            <UserList users={userList} setUsers={setUsers} />
-        </Container>
+      <Container className="mb-5">
+        <h1>Error</h1>
+        <h2>You don't have sufficient permissions to view people.</h2>
+      </Container>
     )
+  }
+
+  return (
+    <Container>
+      <PageHeader title={pageTitle} load={loadUsers} loading={loading}>
+        <Filter
+          placeholder='Filter'
+          value={filter}
+          setValue={setFilter}
+        />
+      </PageHeader>
+      <UserList users={userList} setUsers={setUsers} />
+    </Container>
+  )
 }
 
 export default UsersView
