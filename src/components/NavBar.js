@@ -44,7 +44,7 @@ const NavBar = () => {
   // and we'll find it based on the current user's email
   if (users && currentUser?.profile?.email) {
     const u = users.find(u => u.email === currentUser.profile.email)
-    currentUser = u
+    currentUser = { ...u, name: u.display_name };
   }
 
   // look up the user's display name for each of the hardcoded users
@@ -122,7 +122,7 @@ const NavBar = () => {
                   </Button>
                 </Nav.Item>
               )}
-              {isAuthenticated && (
+              {isAuthenticated && currentUser.picture && (
                 <Dropdown as={Nav.Item}>
                   <Dropdown.Toggle as={Nav.Link} id="profileDropDown">
                     <img
